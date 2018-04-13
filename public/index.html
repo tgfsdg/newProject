@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>登录</title>
+	</head>
+	<script type="text/javascript" src="javascripts/jquery.min.js" ></script>
+	 <script type="text/javascript">
+        function login() {
+        	console.log(111);
+            $.ajax({
+            //几个参数需要注意一下
+                type: "POST",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "/ajax/login" ,//url
+                data: $('#form1').serialize(),
+                success: function (result) {
+                	result = JSON.stringify(result);
+                	alert(result);
+                },
+                error : function(result) {
+                	result = JSON.stringify(result);
+                	alert(result);
+                    alert("异常！");
+                }
+            });
+        }
+    </script>
+	<body>
+		<h1>德玛西亚</h1>
+		
+		<div id="form-div">
+		    <form id="form1" onsubmit="return false" action="##" method="post">
+		        <p>用户名：<input name="userName" type="text" id="txtUserName" tabindex="1" size="15" value=""/></p>
+		        <p>密　码：<input name="password" type="password" id="TextBox2" tabindex="2" size="16" value=""/></p>
+		        <p><input type="button" value="登录" onclick="login()">&nbsp;<input type="reset" value="重置"></p>
+		    </form>
+		</div>
+		
+	</body>
+</html>
